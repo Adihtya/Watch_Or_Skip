@@ -71,6 +71,10 @@ Ready to run this beast locally? Open your terminal and cast these spells:
    npm run build
    ```
 
+## Deploy to GitHub Pages
+
+This project is configured for the repository URL `/Watch_Or_Skip/`. In the GitHub repository, open **Settings → Pages** and set the build and deployment source to **GitHub Actions**. Push to `main` (or run the workflow manually from the Actions tab); the workflow builds the site and deploys the generated `dist` directory.
+
 ---
 
 ## 🖋️ THE SACRED TYPOGRAPHY STACK
