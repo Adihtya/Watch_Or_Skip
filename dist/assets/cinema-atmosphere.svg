@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1000" viewBox="0 0 1600 1000" fill="none">
+  <defs>
+    <linearGradient id="room" x1="120" y1="56" x2="1440" y2="1000" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#51473E"/>
+      <stop offset=".48" stop-color="#25282A"/>
+      <stop offset="1" stop-color="#101318"/>
+    </linearGradient>
+    <radialGradient id="amber" cx="0" cy="0" r="1" gradientTransform="matrix(775 470 -494 815 350 325)" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#C99A69" stop-opacity=".58"/>
+      <stop offset="1" stop-color="#C99A69" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="blue" cx="0" cy="0" r="1" gradientTransform="matrix(635 440 -437 630 1395 725)" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#788393" stop-opacity=".36"/>
+      <stop offset="1" stop-color="#788393" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="screen" cx="0" cy="0" r="1" gradientTransform="matrix(700 340 -438 901 840 341)" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#DBD4C7" stop-opacity=".35"/>
+      <stop offset="1" stop-color="#DBD4C7" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="screenFace" x1="625" y1="198" x2="1131" y2="565" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#9B958B"/>
+      <stop offset=".5" stop-color="#656A6B"/>
+      <stop offset="1" stop-color="#33383B"/>
+    </linearGradient>
+    <linearGradient id="seat" x1="0" y1="0" x2="0" y2="1">
+      <stop stop-color="#3C3734"/>
+      <stop offset="1" stop-color="#151619"/>
+    </linearGradient>
+    <filter id="softLight" x="-35%" y="-35%" width="170%" height="170%">
+      <feGaussianBlur stdDeviation="76"/>
+    </filter>
+    <filter id="grain">
+      <feTurbulence type="fractalNoise" baseFrequency=".76" numOctaves="2" stitchTiles="stitch"/>
+      <feColorMatrix type="saturate" values="0"/>
+      <feComponentTransfer>
+        <feFuncA type="table" tableValues="0 .14"/>
+      </feComponentTransfer>
+    </filter>
+    <linearGradient id="vignette" x1="800" y1="0" x2="800" y2="1000" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0B0D10" stop-opacity=".18"/>
+      <stop offset=".56" stop-color="#0B0D10" stop-opacity=".08"/>
+      <stop offset="1" stop-color="#08090C" stop-opacity=".62"/>
+    </linearGradient>
+  </defs>
+  <path fill="url(#room)" d="M0 0h1600v1000H0z"/>
+  <path fill="url(#amber)" d="M0 0h1600v1000H0z"/>
+  <path fill="url(#blue)" d="M0 0h1600v1000H0z"/>
+  <g filter="url(#softLight)" opacity=".8">
+    <path fill="url(#screen)" d="M0 0h1600v1000H0z"/>
+  </g>
+  <path fill="#131619" fill-opacity=".72" d="M508 145c0-31 25-56 56-56h480c31 0 56 25 56 56v275H508V145Z"/>
+  <path fill="url(#screenFace)" fill-opacity=".42" d="M540 145c0-13 11-24 24-24h480c13 0 24 11 24 24v242H540V145Z"/>
+  <path fill="#EEE6D7" fill-opacity=".14" d="M540 386h528l-34 40H574l-34-40Z"/>
+  <path stroke="#E8DDCB" stroke-opacity=".16" stroke-width="2" d="M530 436h548"/>
+  <path fill="#D9C5A8" fill-opacity=".15" filter="url(#softLight)" d="M590 405h430v37H590z"/>
+  <g fill="url(#seat)">
+    <path d="M52 805c0-49 39-88 88-88h106c49 0 88 39 88 88v195H52V805Z"/>
+    <path d="M314 787c0-61 49-110 110-110h110c61 0 110 49 110 110v213H314V787Z"/>
+    <path d="M1064 790c0-58 47-105 105-105h109c58 0 105 47 105 105v210h-319V790Z"/>
+    <path d="M1322 814c0-47 38-85 85-85h101c47 0 85 38 85 85v186h-271V814Z"/>
+  </g>
+  <g fill="#BDA27F" fill-opacity=".11">
+    <path d="M87 809c0-27 22-49 49-49h112c27 0 49 22 49 49v24H87v-24Z"/>
+    <path d="M353 786c0-37 30-67 67-67h117c37 0 67 30 67 67v26H353v-26Z"/>
+    <path d="M1103 789c0-35 28-63 63-63h111c35 0 63 28 63 63v24h-237v-24Z"/>
+    <path d="M1358 814c0-27 22-49 49-49h101c27 0 49 22 49 49v22h-199v-22Z"/>
+  </g>
+  <path fill="url(#vignette)" d="M0 0h1600v1000H0z"/>
+  <path fill="#fff" opacity=".22" filter="url(#grain)" d="M0 0h1600v1000H0z"/>
+</svg>

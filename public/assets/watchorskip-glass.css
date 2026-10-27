@@ -1,0 +1,1094 @@
+:root {
+  color-scheme: dark;
+  --cinema-glass-window: rgba(30, 32, 37, 0.54);
+  --cinema-glass-secondary: rgba(27, 29, 34, 0.8);
+  --cinema-glass-card: rgba(31, 33, 38, 0.68);
+  --cinema-glass-control: rgba(255, 255, 255, 0.065);
+  --cinema-glass-edge: rgba(255, 255, 255, 0.15);
+  --cinema-glass-edge-soft: rgba(255, 255, 255, 0.085);
+  --cinema-glass-highlight: rgba(255, 255, 255, 0.1);
+  --cinema-glass-shadow: 0 16px 42px rgba(0, 0, 0, 0.25), inset 0 1px var(--cinema-glass-highlight);
+  --cinema-text-muted: rgba(240, 240, 243, 0.58);
+  --cinema-amber: #d7b58b;
+}
+
+html,
+body {
+  min-width: 320px;
+  min-height: 100%;
+}
+
+html {
+  background: #08090c;
+}
+
+body {
+  position: relative;
+  isolation: isolate;
+  background: transparent;
+  color: #f0f0f3;
+}
+
+body::before,
+body::after {
+  position: fixed;
+  inset: -18px;
+  z-index: -1;
+  content: "";
+  pointer-events: none;
+}
+
+body::before {
+  background:
+    linear-gradient(115deg, rgba(13, 15, 19, 0.2), rgba(15, 17, 21, 0.38)),
+    url("./cinema-atmosphere.svg") center / cover no-repeat;
+  filter: blur(24px) saturate(0.62) brightness(0.68);
+  transform: scale(1.055);
+}
+
+body::after {
+  background:
+    radial-gradient(ellipse at 16% 10%, rgba(206, 173, 139, 0.075), transparent 36%),
+    radial-gradient(ellipse at 84% 90%, rgba(116, 128, 148, 0.085), transparent 40%),
+    radial-gradient(ellipse at center, transparent 38%, rgba(5, 6, 9, 0.44) 100%),
+    linear-gradient(180deg, rgba(13, 14, 17, 0.16), rgba(9, 10, 13, 0.42));
+}
+
+#root {
+  position: relative;
+  z-index: 1;
+  min-height: 100vh;
+}
+
+#root > div.relative.min-h-screen {
+  box-sizing: border-box;
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: min(100%, 1760px);
+  min-height: 100vh;
+  margin: 0 auto;
+  padding: clamp(0.75rem, 2vw, 1.5rem);
+  overflow: visible;
+  border: 1px solid transparent;
+  background: transparent;
+}
+
+#root > div.relative.min-h-screen > * {
+  min-width: 0;
+}
+
+#root > div.relative.min-h-screen > header {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  padding: 0.45rem 0.75rem;
+  border: 1px solid var(--cinema-glass-edge-soft);
+  border-radius: 1.25rem;
+  background:
+    radial-gradient(ellipse at 12% 0%, rgba(255, 255, 255, 0.075), transparent 44%),
+    linear-gradient(105deg, rgba(41, 43, 48, 0.68), rgba(24, 26, 31, 0.62));
+  box-shadow: 0 12px 38px rgba(0, 0, 0, 0.18), inset 0 1px rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(18px) saturate(128%);
+  -webkit-backdrop-filter: blur(18px) saturate(128%);
+}
+
+#root > div.relative.min-h-screen > header img {
+  filter: drop-shadow(0 5px 16px rgba(0, 0, 0, 0.36));
+}
+
+#root > div.relative.min-h-screen > div.fixed.inset-0[class*="-z-20"] {
+  filter: saturate(0.42) brightness(0.78);
+}
+
+#root > div.relative.min-h-screen > div.fixed.inset-0[class*="-z-20"] > div:first-child {
+  background-color: transparent;
+}
+
+#root > div.relative.min-h-screen > header > div:last-child button {
+  min-height: 2.45rem;
+  padding-inline: 0.9rem;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 999px;
+  background: var(--cinema-glass-control);
+  color: rgba(248, 248, 250, 0.82);
+  box-shadow: inset 0 1px rgba(255, 255, 255, 0.07);
+}
+
+#root > div.relative.min-h-screen > header > div:last-child button:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.22);
+  translate: 0 -1px;
+}
+
+.cinema-top-nav {
+  display: flex;
+  width: 100%;
+  min-width: 0;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.35rem;
+  overflow-x: auto;
+  border: 1px solid var(--cinema-glass-edge-soft);
+  border-radius: 1.15rem;
+  background:
+    radial-gradient(ellipse at 8% 0%, rgba(255, 255, 255, 0.065), transparent 48%),
+    rgba(23, 25, 30, 0.62);
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.16), inset 0 1px rgba(255, 255, 255, 0.07);
+  backdrop-filter: blur(16px) saturate(128%);
+  -webkit-backdrop-filter: blur(16px) saturate(128%);
+  scrollbar-width: none;
+}
+
+.cinema-top-nav::-webkit-scrollbar {
+  display: none;
+}
+
+.cinema-top-link {
+  display: inline-flex;
+  min-width: max-content;
+  min-height: 2.45rem;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0.9rem;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--cinema-text-muted);
+  font: 500 0.68rem "JetBrains Mono", monospace;
+  letter-spacing: 0.025em;
+  text-decoration: none;
+  cursor: pointer;
+  transition: color 160ms ease, background 160ms ease, border-color 160ms ease;
+}
+
+.cinema-top-link svg {
+  width: 1rem;
+  height: 1rem;
+  flex: 0 0 auto;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.5;
+}
+
+.cinema-top-link:hover,
+.cinema-top-link:focus-visible {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.09);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+.cinema-top-link:hover {
+  translate: 0 -1px;
+}
+
+.cinema-top-link[aria-current="location"] {
+  border-color: rgba(215, 181, 139, 0.25);
+  background:
+    linear-gradient(145deg, rgba(215, 181, 139, 0.18), rgba(255, 255, 255, 0.07)),
+    var(--cinema-glass-control);
+  color: #f3d9b8;
+  box-shadow: inset 0 1px rgba(255, 255, 255, 0.09);
+}
+
+.cinema-top-search kbd {
+  margin-left: 0.25rem;
+  padding: 0.12rem 0.3rem;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 0.35rem;
+  color: rgba(240, 240, 243, 0.48);
+  font: inherit;
+  font-size: 0.56rem;
+}
+
+.cinema-rail {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.4rem;
+  border: 1px solid var(--cinema-glass-edge-soft);
+  border-radius: 1.15rem;
+  background:
+    radial-gradient(ellipse at 50% 0%, rgba(255, 255, 255, 0.07), transparent 56%),
+    rgba(23, 25, 30, 0.68);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.22), inset 0 1px rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(16px) saturate(128%);
+  -webkit-backdrop-filter: blur(16px) saturate(128%);
+}
+
+.cinema-rail-mark {
+  display: grid;
+  width: 2.35rem;
+  height: 2.35rem;
+  margin: 0.1rem auto 0.65rem;
+  place-items: center;
+  color: var(--cinema-amber);
+  filter: drop-shadow(0 0 12px rgba(215, 181, 139, 0.28));
+}
+
+.cinema-rail-mark svg {
+  width: 100%;
+  height: 100%;
+}
+
+.cinema-rail-button {
+  display: inline-flex;
+  min-width: 0;
+  min-height: 2.7rem;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+  padding: 0.55rem 0.7rem;
+  border: 1px solid transparent;
+  border-radius: 0.8rem;
+  background: transparent;
+  color: rgba(239, 239, 243, 0.6);
+  font: 500 0.67rem "JetBrains Mono", monospace;
+  letter-spacing: 0.025em;
+  cursor: pointer;
+  transition: color 160ms ease, background 160ms ease, border-color 160ms ease, transform 160ms ease;
+}
+
+.cinema-rail-button svg {
+  width: 1.15rem;
+  height: 1.15rem;
+  flex: 0 0 auto;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.5;
+}
+
+.cinema-rail-button:hover,
+.cinema-rail-button:focus-visible {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+.cinema-rail-button:hover {
+  translate: 0 -1px;
+}
+
+.cinema-rail-button.is-active {
+  color: #f3d9b8;
+  background: linear-gradient(145deg, rgba(215, 181, 139, 0.16), rgba(255, 255, 255, 0.055));
+  border-color: rgba(215, 181, 139, 0.22);
+  box-shadow: inset 0 1px rgba(255, 255, 255, 0.08);
+}
+
+#root > div.relative.min-h-screen > #smart-watch-or-skip {
+  width: auto;
+  height: 100%;
+  min-height: 0;
+  margin: 0;
+  padding: 1.2rem;
+  overflow: auto;
+  border: 1px solid var(--cinema-glass-edge);
+  border-radius: 1.25rem;
+  background:
+    radial-gradient(ellipse at 100% 0%, rgba(203, 160, 115, 0.14), transparent 42%),
+    linear-gradient(155deg, rgba(42, 44, 49, 0.82), rgba(22, 24, 29, 0.8));
+  box-shadow: 0 18px 42px rgba(0, 0, 0, 0.24), inset 0 1px rgba(255, 255, 255, 0.09);
+  backdrop-filter: blur(18px) saturate(125%);
+  -webkit-backdrop-filter: blur(18px) saturate(125%);
+  scrollbar-color: rgba(255, 255, 255, 0.19) transparent;
+  scrollbar-width: thin;
+}
+
+#root > div.relative.min-h-screen > #smart-watch-or-skip .smart-heading-row {
+  display: block;
+}
+
+#root > div.relative.min-h-screen > #smart-watch-or-skip .smart-eyebrow {
+  color: #d7b58b;
+  font-size: 0.57rem;
+  letter-spacing: 0.12em;
+}
+
+#root > div.relative.min-h-screen > #smart-watch-or-skip h2 {
+  margin-top: 0.65rem;
+  font-size: clamp(1.32rem, 1.6vw, 1.65rem);
+  letter-spacing: -0.045em;
+}
+
+#root > div.relative.min-h-screen > #smart-watch-or-skip .smart-heading-row p {
+  margin-top: 0.55rem;
+  color: var(--cinema-text-muted);
+  font-size: 0.74rem;
+  line-height: 1.55;
+}
+
+#root > div.relative.min-h-screen > #smart-watch-or-skip .smart-local-badge {
+  margin-top: 0.8rem;
+  padding: 0.35rem 0.5rem;
+  border-color: rgba(255, 255, 255, 0.1);
+  color: rgba(240, 240, 243, 0.55);
+  font-size: 0.51rem;
+}
+
+#root > div.relative.min-h-screen > #smart-watch-or-skip .smart-form {
+  flex-direction: column;
+  gap: 0.55rem;
+  margin-top: 1rem;
+}
+
+#root > div.relative.min-h-screen > #smart-watch-or-skip .smart-form input {
+  width: 100%;
+  padding: 0.78rem 0.8rem;
+  border-color: rgba(255, 255, 255, 0.13);
+  border-radius: 0.75rem;
+  background: rgba(7, 8, 11, 0.36);
+  font-size: 0.75rem;
+  line-height: 1.5;
+}
+
+#root > div.relative.min-h-screen > #smart-watch-or-skip .smart-form input:focus {
+  border-color: rgba(215, 181, 139, 0.62);
+  box-shadow: 0 0 0 3px rgba(215, 181, 139, 0.1);
+}
+
+#root > div.relative.min-h-screen > #smart-watch-or-skip .smart-form button {
+  width: 100%;
+  min-height: 2.7rem;
+  border: 1px solid rgba(255, 242, 225, 0.76);
+  border-radius: 0.75rem;
+  background: linear-gradient(135deg, #ead7bf, #d8c4ac);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2), inset 0 1px rgba(255, 255, 255, 0.58);
+  font-size: 0.65rem;
+}
+
+#root > div.relative.min-h-screen > #smart-watch-or-skip .smart-examples {
+  align-items: stretch;
+  gap: 0.35rem;
+  margin-top: 0.9rem;
+}
+
+#root > div.relative.min-h-screen > #smart-watch-or-skip.has-result .smart-examples {
+  display: none;
+}
+
+#root > div.relative.min-h-screen > #smart-watch-or-skip .smart-examples > span {
+  width: 100%;
+  margin: 0 0 0.12rem;
+  color: rgba(240, 240, 243, 0.38);
+  font-size: 0.52rem;
+}
+
+#root > div.relative.min-h-screen > #smart-watch-or-skip .smart-example {
+  max-width: 100%;
+  padding: 0.4rem 0.52rem;
+  border-color: rgba(255, 255, 255, 0.09);
+  background: rgba(255, 255, 255, 0.045);
+  color: rgba(240, 240, 243, 0.66);
+  font-size: 0.6rem;
+  line-height: 1.35;
+  text-align: left;
+}
+
+#root > div.relative.min-h-screen > #smart-watch-or-skip .smart-output {
+  margin-top: 1rem;
+}
+
+#root > div.relative.min-h-screen > #smart-watch-or-skip .smart-result {
+  padding: 0.85rem;
+  border-color: rgba(255, 255, 255, 0.1);
+  border-radius: 0.95rem;
+  background: rgba(8, 9, 12, 0.38);
+  box-shadow: inset 0 1px rgba(255, 255, 255, 0.055);
+}
+
+#root > div.relative.min-h-screen > #smart-watch-or-skip .smart-result-topline {
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+#root > div.relative.min-h-screen > #smart-watch-or-skip .smart-match-meta {
+  width: 100%;
+  margin-left: 0;
+}
+
+#root > div.relative.min-h-screen > #smart-watch-or-skip .smart-film-layout {
+  display: block;
+}
+
+#root > div.relative.min-h-screen > #smart-watch-or-skip .smart-film-copy h3,
+#root > div.relative.min-h-screen > #smart-watch-or-skip .smart-result > h3 {
+  font-size: 1.12rem;
+  line-height: 1.25;
+}
+
+#root > div.relative.min-h-screen > #smart-watch-or-skip .smart-film-byline {
+  font-size: 0.63rem;
+  line-height: 1.5;
+}
+
+#root > div.relative.min-h-screen > #smart-watch-or-skip .smart-explanation {
+  margin-top: 0.65rem;
+  font-size: 0.72rem;
+  line-height: 1.55;
+}
+
+#root > div.relative.min-h-screen > #smart-watch-or-skip .smart-synopsis {
+  font-size: 0.67rem;
+  line-height: 1.55;
+}
+
+#root > div.relative.min-h-screen > #smart-watch-or-skip .smart-rating {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.35rem;
+  margin-top: 0.65rem;
+  font-size: 0.75rem;
+}
+
+#root > div.relative.min-h-screen > #smart-watch-or-skip .smart-rating small {
+  margin: 0;
+  font-size: 0.5rem;
+}
+
+#root > div.relative.min-h-screen > #smart-watch-or-skip .smart-open-film {
+  width: 100%;
+  margin-top: 0.7rem;
+  padding: 0.58rem 0.65rem;
+  font-size: 0.58rem;
+}
+
+#root > div.relative.min-h-screen > #smart-watch-or-skip .smart-alternatives {
+  align-items: stretch;
+}
+
+#root > div.relative.min-h-screen > #smart-watch-or-skip .smart-alternatives > span {
+  width: 100%;
+}
+
+#root > div.relative.min-h-screen > #smart-watch-or-skip .smart-alternative {
+  width: 100%;
+}
+
+#root > div.relative.min-h-screen > #smart-watch-or-skip .smart-disclaimer {
+  font-size: 0.52rem;
+  line-height: 1.45;
+}
+
+#root > div.relative.min-h-screen > main {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: none;
+  min-height: 34rem;
+  margin: 0;
+  padding: 0.3rem;
+  align-self: stretch;
+  justify-content: center;
+}
+
+#root > div.relative.min-h-screen > main > div {
+  min-width: 0;
+}
+
+#root > div.relative.min-h-screen > footer {
+  box-sizing: border-box;
+  position: sticky !important;
+  z-index: 40;
+  right: auto !important;
+  bottom: 0 !important;
+  left: auto !important;
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  padding: 0;
+  translate: none !important;
+  transform: none !important;
+}
+
+.glass-panel,
+.glass-dock {
+  border-color: var(--cinema-glass-edge);
+  background:
+    radial-gradient(ellipse at 10% 0%, rgba(255, 255, 255, 0.075), transparent 42%),
+    linear-gradient(145deg, rgba(37, 39, 44, 0.82), var(--cinema-glass-secondary));
+  box-shadow: var(--cinema-glass-shadow);
+  backdrop-filter: blur(16px) saturate(128%);
+  -webkit-backdrop-filter: blur(16px) saturate(128%);
+}
+
+.glass-panel {
+  background:
+    radial-gradient(ellipse at 8% 0%, rgba(255, 255, 255, 0.075), transparent 44%),
+    linear-gradient(145deg, rgba(38, 40, 45, 0.8), rgba(25, 27, 32, 0.8));
+}
+
+.glass-card {
+  border-color: rgba(255, 255, 255, 0.13);
+  background:
+    radial-gradient(ellipse at 12% 0%, rgba(255, 255, 255, 0.055), transparent 48%),
+    var(--cinema-glass-card);
+  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.19), inset 0 1px rgba(255, 255, 255, 0.065);
+  transition: background-color 180ms ease, border-color 180ms ease, box-shadow 180ms ease, translate 180ms ease;
+}
+
+.glass-card:hover {
+  border-color: rgba(255, 255, 255, 0.2);
+  background:
+    radial-gradient(ellipse at 12% 0%, rgba(255, 255, 255, 0.08), transparent 48%),
+    rgba(39, 41, 47, 0.76);
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.24), inset 0 1px rgba(255, 255, 255, 0.1);
+  translate: 0 -1px;
+}
+
+.glass-pill,
+.glass-pill-active {
+  border-color: rgba(255, 255, 255, 0.12);
+  background:
+    linear-gradient(145deg, rgba(255, 255, 255, 0.06), transparent 75%),
+    rgba(27, 29, 34, 0.58);
+  box-shadow: inset 0 1px rgba(255, 255, 255, 0.055);
+  transition: color 160ms ease, background-color 160ms ease, border-color 160ms ease, box-shadow 160ms ease, translate 160ms ease;
+}
+
+.glass-pill:hover {
+  border-color: rgba(255, 255, 255, 0.2);
+  background:
+    linear-gradient(145deg, rgba(255, 255, 255, 0.11), transparent 75%),
+    rgba(43, 45, 51, 0.72);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.16), inset 0 1px rgba(255, 255, 255, 0.1);
+  translate: 0 -1px;
+}
+
+.glass-pill-active {
+  border-color: rgba(215, 181, 139, 0.32);
+  background:
+    linear-gradient(145deg, rgba(255, 255, 255, 0.1), transparent 70%),
+    rgba(215, 181, 139, 0.2);
+  box-shadow: inset 0 1px rgba(255, 255, 255, 0.11), 0 5px 16px rgba(0, 0, 0, 0.13);
+}
+
+.cinema-top-link:focus-visible,
+.cinema-rail button:focus-visible,
+#smart-watch-or-skip button:focus-visible,
+#smart-watch-or-skip input:focus-visible,
+#root > div.relative.min-h-screen > header button:focus-visible {
+  outline: 2px solid rgba(236, 204, 168, 0.9);
+  outline-offset: 3px;
+}
+
+@media (min-width: 1100px) {
+  #root > div.relative.min-h-screen {
+    display: grid !important;
+    grid-template-columns: 4.2rem minmax(16rem, 20rem) minmax(0, 1fr);
+    grid-template-rows: 4.5rem 3.2rem minmax(0, 1fr) 5rem;
+    grid-template-areas:
+      "top top top"
+      "links links links"
+      "rail discover main"
+      "rail dock dock";
+    gap: 0.85rem;
+    width: min(calc(100vw - 3rem), 1760px);
+    height: min(calc(100vh - 3rem), 1060px);
+    min-height: 700px;
+    margin: 1.5rem auto;
+    padding: 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.19);
+    border-radius: 2rem;
+    background:
+      radial-gradient(ellipse at 72% -12%, rgba(230, 204, 176, 0.095), transparent 38%),
+      linear-gradient(145deg, rgba(40, 42, 47, 0.55), var(--cinema-glass-window));
+    box-shadow: 0 42px 110px rgba(0, 0, 0, 0.46), 0 8px 28px rgba(0, 0, 0, 0.18), inset 0 1px rgba(255, 255, 255, 0.2);
+  }
+
+  #root > div.relative.min-h-screen > header {
+    grid-area: top;
+    min-height: 0;
+  }
+
+  .cinema-top-nav {
+    grid-area: links;
+    justify-content: flex-start;
+    padding-inline: 0.45rem;
+  }
+
+  .cinema-top-link {
+    min-height: 2.35rem;
+  }
+
+  #cinema-rail {
+    grid-area: rail;
+    min-height: 0;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 0.45rem 0.3rem;
+  }
+
+  .cinema-rail-mark {
+    margin-bottom: 0.75rem;
+  }
+
+  .cinema-rail-button {
+    width: 100%;
+    min-height: 3rem;
+    flex-direction: column;
+    gap: 0.28rem;
+    padding: 0.45rem 0.15rem;
+    font-size: 0.54rem;
+    letter-spacing: 0;
+  }
+
+  .cinema-rail-button svg {
+    width: 1.08rem;
+    height: 1.08rem;
+  }
+
+  #root > div.relative.min-h-screen > #smart-watch-or-skip {
+    grid-area: discover;
+  }
+
+  #root > div.relative.min-h-screen > #smart-watch-or-skip .smart-synopsis,
+  #root > div.relative.min-h-screen > #smart-watch-or-skip .smart-alternatives,
+  #root > div.relative.min-h-screen > #smart-watch-or-skip .smart-disclaimer {
+    display: none;
+  }
+
+}
+
+  .cinema-featured-hero[hidden] {
+    display: none;
+  }
+
+  .cinema-featured-hero {
+    position: relative;
+    isolation: isolate;
+    display: grid;
+    flex: 0 0 auto;
+    grid-template-columns: minmax(0, 1.25fr) minmax(12rem, 0.75fr);
+    min-height: 20rem;
+    margin: 0 0 1.1rem;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 1.45rem;
+    background:
+      radial-gradient(ellipse at 82% 45%, rgba(215, 181, 139, 0.18), transparent 42%),
+      linear-gradient(135deg, rgba(39, 41, 47, 0.96), rgba(20, 22, 27, 0.94));
+    box-shadow: 0 22px 54px rgba(0, 0, 0, 0.32), inset 0 1px rgba(255, 255, 255, 0.16);
+    backdrop-filter: blur(14px) saturate(125%);
+    -webkit-backdrop-filter: blur(14px) saturate(125%);
+  }
+
+  .cinema-featured-art {
+    position: relative;
+    grid-column: 2;
+    grid-row: 1;
+    min-width: 0;
+    min-height: 20rem;
+    overflow: hidden;
+    background:
+      radial-gradient(ellipse at 72% 45%, rgba(215, 181, 139, 0.2), transparent 62%),
+      linear-gradient(145deg, rgba(255, 255, 255, 0.035), transparent 70%);
+  }
+
+  .cinema-featured-art::after {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, rgba(22, 24, 29, 0.46), transparent 44%);
+    content: "";
+    pointer-events: none;
+  }
+
+  #root > div.relative.min-h-screen > main .cinema-featured-image {
+    position: absolute;
+    inset: 0.8rem;
+    width: calc(100% - 1.6rem);
+    height: calc(100% - 1.6rem);
+    object-fit: contain;
+    object-position: center;
+    filter: drop-shadow(0 18px 26px rgba(0, 0, 0, 0.4));
+  }
+
+  .cinema-featured-art-unavailable .cinema-featured-image {
+    visibility: hidden;
+  }
+
+  .cinema-featured-copy {
+    position: relative;
+    z-index: 1;
+    grid-column: 1;
+    grid-row: 1;
+    align-self: center;
+    padding: clamp(1.15rem, 2.2vw, 2rem);
+  }
+
+  .cinema-featured-eyebrow,
+  .cinema-featured-verdict-note {
+    color: rgba(245, 232, 214, 0.68);
+    font: 500 0.58rem "JetBrains Mono", monospace;
+    letter-spacing: 0.13em;
+  }
+
+  .cinema-featured-verdict-row {
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+    margin-top: 0.95rem;
+  }
+
+  .cinema-featured-verdict {
+    display: inline-flex;
+    min-height: 1.75rem;
+    align-items: center;
+    padding: 0.28rem 0.7rem;
+    border: 1px solid rgba(153, 226, 179, 0.36);
+    border-radius: 999px;
+    background: rgba(59, 130, 86, 0.22);
+    color: #b7f0ca;
+    font: 700 0.65rem "JetBrains Mono", monospace;
+    letter-spacing: 0.1em;
+  }
+
+  .cinema-featured-verdict-maybe {
+    border-color: rgba(244, 208, 126, 0.38);
+    background: rgba(180, 130, 46, 0.22);
+    color: #f5d894;
+  }
+
+  .cinema-featured-verdict-skip {
+    border-color: rgba(247, 145, 145, 0.38);
+    background: rgba(160, 55, 55, 0.22);
+    color: #ffb6b6;
+  }
+
+  .cinema-featured-verdict-note {
+    font-size: 0.5rem;
+    letter-spacing: 0.08em;
+  }
+
+  .cinema-featured-copy h2 {
+    margin: 0.7rem 0 0;
+    color: #fff;
+    font: 700 clamp(1.8rem, 3.2vw, 2.8rem) "Syne", sans-serif;
+    letter-spacing: -0.055em;
+    line-height: 1.04;
+    text-wrap: balance;
+    text-shadow: 0 2px 18px rgba(0, 0, 0, 0.35);
+  }
+
+  .cinema-featured-meta {
+    margin: 0.7rem 0 0;
+    color: rgba(245, 245, 248, 0.76);
+    font: 500 0.65rem "JetBrains Mono", monospace;
+    line-height: 1.6;
+  }
+
+  .cinema-featured-synopsis {
+    display: -webkit-box;
+    max-width: 38rem;
+    margin: 0.75rem 0 0;
+    overflow: hidden;
+    color: rgba(245, 245, 248, 0.84);
+    font: 400 0.83rem/1.58 "Plus Jakarta Sans", sans-serif;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+  }
+
+  .cinema-featured-rating {
+    margin: 0.7rem 0 0;
+    color: rgba(245, 232, 214, 0.72);
+    font: 500 0.66rem "JetBrains Mono", monospace;
+  }
+
+  .cinema-featured-rating strong {
+    margin-left: 0.28rem;
+    color: #fff;
+    font-size: 0.82rem;
+  }
+
+  .cinema-featured-actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 1rem;
+  }
+
+  .cinema-featured-button {
+    display: inline-flex;
+    min-height: 2.55rem;
+    align-items: center;
+    justify-content: center;
+    gap: 0.45rem;
+    padding: 0.58rem 0.82rem;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 0.8rem;
+    background:
+      linear-gradient(145deg, rgba(255, 255, 255, 0.08), transparent 72%),
+      rgba(255, 255, 255, 0.055);
+    color: rgba(248, 248, 250, 0.92);
+    font: 600 0.61rem "JetBrains Mono", monospace;
+    cursor: pointer;
+    box-shadow: inset 0 1px rgba(255, 255, 255, 0.1);
+    transition: background-color 160ms ease, border-color 160ms ease, box-shadow 160ms ease, translate 160ms ease;
+  }
+
+  .cinema-featured-button:hover {
+    translate: 0 -1px;
+    border-color: rgba(255, 255, 255, 0.3);
+    background-color: rgba(255, 255, 255, 0.13);
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.19), inset 0 1px rgba(255, 255, 255, 0.14);
+  }
+
+  .cinema-featured-details {
+    border-color: rgba(255, 242, 225, 0.72);
+    background: linear-gradient(135deg, #ead7bf, #d8c4ac);
+    color: #191714;
+    box-shadow: 0 8px 22px rgba(0, 0, 0, 0.23), inset 0 1px rgba(255, 255, 255, 0.58);
+  }
+
+  .cinema-featured-details:hover {
+    border-color: #fff4e5;
+    background: linear-gradient(135deg, #f3e5d3, #e1ceb7);
+  }
+
+  .cinema-featured-status {
+    min-height: 1.05rem;
+    margin: 0.4rem 0 0;
+    color: rgba(240, 240, 243, 0.62);
+    font: 400 0.59rem/1.45 "Plus Jakarta Sans", sans-serif;
+  }
+
+  .cinema-featured-status:empty {
+    display: none;
+  }
+
+  .cinema-featured-button:focus-visible {
+    outline: 2px solid rgba(236, 204, 168, 0.95);
+    outline-offset: 3px;
+  }
+
+@media (min-width: 1100px) {
+  #root > div.relative.min-h-screen > main {
+    grid-area: main;
+    min-height: 0;
+    justify-content: flex-start !important;
+    overflow: auto;
+    border: 1px solid rgba(255, 255, 255, 0.075);
+    border-radius: 1.35rem;
+    background: linear-gradient(155deg, rgba(9, 10, 14, 0.15), rgba(9, 10, 14, 0.32));
+    box-shadow: inset 0 1px rgba(255, 255, 255, 0.055);
+  }
+
+  #root > div.relative.min-h-screen > footer {
+    grid-area: dock;
+    position: relative !important;
+    min-height: 0;
+    align-self: stretch;
+  }
+
+  #root > div.relative.min-h-screen > footer > div {
+    box-sizing: border-box;
+    min-height: 100%;
+    justify-content: flex-start;
+    gap: 0.45rem;
+    overflow-x: auto;
+    border-radius: 1.15rem;
+    background:
+      radial-gradient(ellipse at 8% 0%, rgba(255, 255, 255, 0.065), transparent 45%),
+      rgba(25, 27, 32, 0.78);
+    scrollbar-width: none;
+  }
+
+  #root > div.relative.min-h-screen > footer > div::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+@media (max-width: 1099px) {
+  #cinema-rail {
+    display: none;
+  }
+
+  .cinema-top-nav {
+    justify-content: flex-start;
+  }
+
+  #root > div.relative.min-h-screen > #smart-watch-or-skip {
+    height: auto;
+  }
+
+  #root > div.relative.min-h-screen > main {
+    min-height: 30rem;
+  }
+}
+
+@media (max-width: 700px) {
+  #root > div.relative.min-h-screen {
+    gap: 0.75rem;
+    padding: 0.65rem;
+  }
+
+  #root > div.relative.min-h-screen > header {
+    padding: 0.35rem 0.4rem;
+    border-radius: 1rem;
+  }
+
+  .cinema-top-nav {
+    gap: 0.15rem;
+    padding: 0.22rem;
+  }
+
+  .cinema-top-link {
+    gap: 0.32rem;
+    min-height: 2.3rem;
+    padding-inline: 0.48rem;
+    font-size: 0.62rem;
+  }
+
+  .cinema-top-link svg {
+    width: 0.9rem;
+    height: 0.9rem;
+  }
+
+  .cinema-top-search kbd {
+    display: none;
+  }
+
+  #cinema-rail {
+    width: 100%;
+    justify-content: space-around;
+    padding: 0.32rem;
+    border-radius: 0.95rem;
+  }
+
+  .cinema-rail-mark {
+    width: 1.8rem;
+    height: 1.8rem;
+    margin: 0 0.2rem;
+  }
+
+  .cinema-rail-button {
+    min-height: 2.5rem;
+    padding: 0.35rem 0.55rem;
+    font-size: 0.57rem;
+  }
+
+  #root > div.relative.min-h-screen > #smart-watch-or-skip {
+    padding: 1rem;
+    border-radius: 1.05rem;
+  }
+
+  .cinema-featured-hero {
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+  }
+
+  .cinema-featured-art {
+    height: 13rem;
+    min-height: 13rem;
+    flex: 0 0 13rem;
+    order: 0;
+  }
+
+  .cinema-featured-art::after {
+    background: linear-gradient(180deg, transparent 62%, rgba(22, 24, 29, 0.62));
+  }
+
+  #root > div.relative.min-h-screen > main .cinema-featured-image {
+    inset: 0.55rem;
+    width: calc(100% - 1.1rem);
+    height: calc(100% - 1.1rem);
+  }
+
+  .cinema-featured-copy {
+    order: 1;
+    padding: 0.3rem 1rem 1rem;
+  }
+
+  .cinema-featured-copy h2 {
+    font-size: clamp(1.7rem, 8vw, 2.2rem);
+  }
+
+  .cinema-featured-verdict-note {
+    font-size: 0.46rem;
+  }
+
+  .cinema-featured-synopsis {
+    font-size: 0.77rem;
+  }
+
+  #root > div.relative.min-h-screen > main {
+    min-height: 27rem;
+    padding: 0;
+    border-radius: 1rem;
+  }
+
+  #root > div.relative.min-h-screen > footer > div {
+    max-height: 6rem;
+    overflow: auto;
+  }
+}
+
+@media (max-width: 359px) {
+  .cinema-top-nav {
+    gap: 0;
+    padding: 0.15rem;
+  }
+
+  .cinema-top-link {
+    gap: 0.18rem;
+    padding-inline: 0.32rem;
+    font-size: 0.57rem;
+  }
+
+  .cinema-top-link svg {
+    width: 0.82rem;
+    height: 0.82rem;
+  }
+}
+
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  #root > div.relative.min-h-screen > header,
+  #root > div.relative.min-h-screen,
+  .cinema-top-nav,
+  .cinema-rail,
+  .cinema-featured-hero,
+  #root > div.relative.min-h-screen > #smart-watch-or-skip,
+  .glass-panel,
+  .glass-card,
+  .glass-dock,
+  .glass-pill,
+  .glass-pill-active {
+    background-color: rgba(28, 30, 35, 0.94);
+  }
+}
+
+@media (prefers-reduced-transparency: reduce) {
+  #root > div.relative.min-h-screen,
+  #root > div.relative.min-h-screen > header,
+  #root > div.relative.min-h-screen > #smart-watch-or-skip,
+  .cinema-featured-hero,
+  .cinema-top-nav,
+  .cinema-rail,
+  .glass-panel,
+  .glass-card,
+  .glass-dock,
+  .glass-pill,
+  .glass-pill-active {
+    background: rgba(25, 27, 32, 0.96);
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}

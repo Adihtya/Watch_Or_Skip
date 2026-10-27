@@ -14,6 +14,11 @@ Spin them. Flip them. Let the confetti drop. 📀✨
 - 💅 **A24 AESTHETICS ON STEROIDS:** Deep blacks, crisp contrasts, and typography so good it belongs in a museum. 
 - 🎉 **CONFETTI EXPLOSIONS:** Powered by `canvas-confetti` because every great movie choice deserves a celebration.
 - 🚀 **WARP-SPEED PERFORMANCE:** React 19 + Vite = UI that updates before you even finish clicking.
+- 🪟 **CINEMATIC GLASS SHELL:** A responsive glassmorphism archive with primary horizontal navigation, a complementary desktop rail, and compact mobile controls for Discover, Movies, Genres, and Search.
+- 🎞️ **FEATURED MOVIE HERO:** A wide, responsive lead card follows the active archive film, using its existing poster and verified catalog metadata, rating-based WATCH / MAYBE / SKIP, details, trailer, and a device-local watchlist action.
+- 🎬 **SMART WATCH OR SKIP:** Describe your mood, a reference film, or a runtime limit and get an explainable WATCH / MAYBE / SKIP recommendation from the archive.
+
+The Smart Watch Or Skip matcher runs locally against the archive's genres, synopses, and runtimes. Your prompt is not sent to a third-party service. The featured hero follows the archive's selected film and opens its existing detail and trailer views; watchlist IDs are stored in the browser's local storage. The glass shell uses separate smoky window, readable panel, card, navigation, and control materials. Backdrop blur is reserved for standalone surfaces rather than repeated on every movie card, with solid fallbacks for browsers without filter support and reduced-transparency preferences.
 
 ---
 
